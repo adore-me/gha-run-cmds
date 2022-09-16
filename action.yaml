@@ -1,0 +1,33 @@
+name: 'AdoreMe Tech Run cmds Action'
+description: 'Run different commands in a container.'
+inputs:
+  docker-image:
+    description: 'The docker image to use'
+    required: true
+  run-laravel-route-cache:
+    description: 'Run laravel route cache command'
+    required: false
+    default: 'false'
+  custom-cmds:
+    description: 'Commands to run. Separate with comma.'
+    required: false
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Start Container'
+      run: $GITHUB_ACTION_PATH/start-container.sh
+      shell: bash
+      env:
+        INPUT_DOCKER_IMAGE: ${{ inputs.docker-image }}
+    - name: 'Run Commands'
+      run: $GITHUB_ACTION_PATH/cmds.sh
+      shell: bash
+      env:
+        INPUT_RUN_LARAVEL_ROUTE_CACHE: ${{ inputs.run-laravel-route-cache }}
+        INPUT_CUSTOM_CMDS: ${{ inputs.custom-cmds }}
+    - name: 'Stop Container'
+      if: always()
+      shell: bash
+      run: |
+        docker stop cmds-container -t 0 || true
+        docker rm cmds-container || true
