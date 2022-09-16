@@ -1,8 +1,8 @@
 name: 'AdoreMe Tech Run cmds Action'
-description: 'Run different commands in PHP container.'
+description: 'Run different commands in a container.'
 inputs:
-  php-image:
-    description: 'The PHP image to use'
+  docker-image:
+    description: 'The docker image to use'
     required: true
   run-laravel-route-cache:
     description: 'Run laravel route cache command'
@@ -18,7 +18,7 @@ runs:
       run: $GITHUB_ACTION_PATH/start-container.sh
       shell: bash
       env:
-        INPUT_PHP_IMAGE: ${{ inputs.php-image }}
+        INPUT_DOCKER_IMAGE: ${{ inputs.docker-image }}
     - name: 'Run Commands'
       run: $GITHUB_ACTION_PATH/cmds.sh
       shell: bash
@@ -29,5 +29,5 @@ runs:
       if: always()
       shell: bash
       run: |
-        docker stop php -t 0 || true
-        docker rm php || true
+        docker stop cmds-container -t 0 || true
+        docker rm cmds-container || true
