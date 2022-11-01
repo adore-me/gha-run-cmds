@@ -2,13 +2,16 @@
 
 ## Description
 Run different commands in container.
+ℹ The PHP image used can be passed through `docker-image` input or through `PROJECT_IMAGE` env variable.    
+**NOTE:** If you use [gha-image-setup](https://github.com/adore-me/gha-image-setup) in a previous step you don't need to worry about it, as it already sets the `PROJECT_IMAGE` 👌    
+**Input** takes precedence!
 
 ## Inputs 
 | Key                         | Required  | Default | Description                                                                                |
 |-----------------------------|-----------|---------|--------------------------------------------------------------------------------------------|
-| **docker-image**            | **true**  | `N/A`   | Image to use (fully qualified image address. ex: quay.io/adoreme/nginx-fpm-alpine:v0.0.1). |
+| **docker-image**            | **true**  | `''`    | Image to use (fully qualified image address. ex: quay.io/adoreme/nginx-fpm-alpine:v0.0.1). |
 | **run-laravel-route-cache** | **false** | `false` | Enable or disable laravel route caching                                                    |
-| **custom-cmds**             | **false** | `N/A`   | Add extra commands separated by new line or in one single line with `&&`                   |
+| **custom-cmds**             | **false** | `''`    | Add extra commands separated by new line or in one single line with `&&`                   |
 
 ## Outputs
 None.
