@@ -7,11 +7,12 @@ Run different commands in container.
 **Input** takes precedence!
 
 ## Inputs 
-| Key                         | Required  | Default | Description                                                                                |
-|-----------------------------|-----------|---------|--------------------------------------------------------------------------------------------|
-| **docker-image**            | **true**  | `''`    | Image to use (fully qualified image address. ex: quay.io/adoreme/nginx-fpm-alpine:v0.0.1). |
-| **run-laravel-route-cache** | **false** | `false` | Enable or disable laravel route caching                                                    |
-| **custom-cmds**             | **false** | `''`    | Add extra commands separated by new line or in one single line with `&&`                   |
+| Key                          | Required  | Default | Description                                                                                |
+|------------------------------|-----------|---------|--------------------------------------------------------------------------------------------|
+| **docker-image**             | **true**  | `''`    | Image to use (fully qualified image address. ex: quay.io/adoreme/nginx-fpm-alpine:v0.0.1). |
+| **run-laravel-route-cache**  | **false** | `false` | Enable or disable laravel route caching                                                    |
+| **run-laravel-config-cache** | **false** | `false` | Enable or disable laravel config caching                                                   |
+| **custom-cmds**              | **false** | `''`    | Add extra commands separated by new line or in one single line with `&&`                   |
 
 ## Outputs
 None.
@@ -27,6 +28,7 @@ steps:
     with:
       docker-image: SOME_DOCKER_IMAGE
       run-laravel-route-cache: true
+      run-laravel-config-cache: true
       custom-cmds: |
         php artisan config:cache
         php artisan route:list

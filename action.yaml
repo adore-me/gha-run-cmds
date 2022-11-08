@@ -8,6 +8,10 @@ inputs:
     description: 'Run laravel route cache command'
     required: false
     default: 'false'
+  run-laravel-config-cache:
+    description: 'Run laravel config cache command'
+    required: false
+    default: 'false'
   custom-cmds:
     description: 'Commands to run. Separate with comma.'
     required: false
@@ -24,6 +28,7 @@ runs:
       shell: bash
       env:
         INPUT_RUN_LARAVEL_ROUTE_CACHE: ${{ inputs.run-laravel-route-cache }}
+        INPUT_RUN_LARAVEL_CONFIG_CACHE: ${{ inputs.run-laravel-config-cache }}
         INPUT_CUSTOM_CMDS: ${{ inputs.custom-cmds }}
     - name: 'Stop Container'
       if: always()
