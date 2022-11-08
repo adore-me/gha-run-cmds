@@ -11,7 +11,6 @@ Run different commands in container.
 |------------------------------|-----------|---------|--------------------------------------------------------------------------------------------|
 | **docker-image**             | **true**  | `''`    | Image to use (fully qualified image address. ex: quay.io/adoreme/nginx-fpm-alpine:v0.0.1). |
 | **run-laravel-route-cache**  | **false** | `false` | Enable or disable laravel route caching                                                    |
-| **run-laravel-config-cache** | **false** | `false` | Enable or disable laravel config caching                                                   |
 | **custom-cmds**              | **false** | `''`    | Add extra commands separated by new line or in one single line with `&&`                   |
 
 ## Outputs

@@ -7,11 +7,6 @@ YL='\033[0;33m'
 BL='\033[0;34m'
 NC='\033[0m'
 
-if [ -z "$INPUT_DOCKER_IMAGE" ]; then
-  echo "::error::No PHP image provided"
-  exit 1
-fi
-
 ACTION_IMAGE=""
 if [ -n "$PROJECT_IMAGE" ]; then
   echo -e "${BL}Info:${NC} Project image found in env var PROJECT_IMAGE: ${GR}$PROJECT_IMAGE${NC}"

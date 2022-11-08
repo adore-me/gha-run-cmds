@@ -12,11 +12,6 @@ if [ "$INPUT_RUN_LARAVEL_ROUTE_CACHE" == "true" ]; then
   docker exec cmds-container bash -c "php artisan route:cache"
 fi
 
-if [ "$INPUT_RUN_LARAVEL_CONFIG_CACHE" == "true" ]; then
-  echo -e "${BL}Info:${NC} Running laravel config caching.."
-  docker exec cmds-container bash -c "php artisan config:cache"
-fi
-
 if [ -n "$INPUT_CUSTOM_CMDS" ]; then
   echo -e "${BL}Info:${NC} Running custom commands.."
   readarray -t <<<"$INPUT_CUSTOM_CMDS"
